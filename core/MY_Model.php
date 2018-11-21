@@ -114,7 +114,7 @@ class MY_Model extends CI_Model
      * Enables created_at and updated_at fields
      */
     protected $timestamps = TRUE;
-    protected $timestamps_format = 'Y-m-d H:i:s';
+    protected $timestamps_format = 'timestamp';
 
     protected $_created_at_field;
     protected $_updated_at_field;
@@ -1752,12 +1752,12 @@ class MY_Model extends CI_Model
     }
 
     /**
-     * private function _the_timestamp()
+     * protected function _the_timestamp()
      *
      * returns a value representing the date/time depending on the timestamp format choosed
      * @return string
      */
-    private function _the_timestamp()
+    protected function _the_timestamp()
     {
         if($this->timestamps_format=='timestamp')
         {
