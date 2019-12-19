@@ -631,7 +631,7 @@ class MY_Model extends CI_Model
         {
             $this->_database->where($field_or_array);
         }
-        elseif(!isset($value) && isset($field_or_array) && isset($operator_or_value) && !is_array($operator_or_value))
+        elseif(!isset($value) && isset($field_or_array) && !is_array($operator_or_value))
         {
             $this->_database->{$where_or}(array($this->table.'.'.$field_or_array => $operator_or_value));
         }
