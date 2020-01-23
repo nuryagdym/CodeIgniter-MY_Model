@@ -644,7 +644,7 @@ With the `where:...` you can pass a where clause that will be interpreted as str
 
 The where clause is an *exclusivist* one. That means that it will retrieve only results that are complying to the subresult's where. If a `users` table has relationship with a `details` table, and you set a `where` clause inside the with_*() method, that `where:...` looks only for the results that have `first_name` of `John` in the `details` table, the final results that will be returned will only be those users from the `users` table that have a related first_name inside the `details` table of `John`.
 ```php
-$user = $this->user_model->with_phone('fields:mobile_number', 'where:`phone_status`=\'active\'')->get(1);
+$user = $this->user_model->with_phone('fields:mobile_number|where:`phone_status`=\'active\'')->get(1);
 ```
 
 A `non_exclusive_where` would return all the main results and only the additional subresults appended to the main results.
