@@ -1744,9 +1744,15 @@ class MY_Model extends CI_Model
     {
         if($this->timestamps !== FALSE)
         {
-            $this->_created_at_field = (is_array($this->timestamps) && isset($this->timestamps[0])) ? $this->timestamps[0] : 'created_at';
-            $this->_updated_at_field = (is_array($this->timestamps) && isset($this->timestamps[1])) ? $this->timestamps[1] : 'updated_at';
-            $this->_deleted_at_field = (is_array($this->timestamps) && isset($this->timestamps[2])) ? $this->timestamps[2] : 'deleted_at';
+        	if(strlen($this->_created_at_field) == 0) {
+			$this->_created_at_field = (is_array($this->timestamps) && isset($this->timestamps[0])) ? $this->timestamps[0] : 'created_at';
+		}
+		if(strlen($this->_updated_at_field) == 0) {
+			$this->_updated_at_field = (is_array($this->timestamps) && isset($this->timestamps[1])) ? $this->timestamps[1] : 'updated_at';
+		}
+		if(strlen($this->_deleted_at_field) == 0) {
+			$this->_deleted_at_field = (is_array($this->timestamps) && isset($this->timestamps[2])) ? $this->timestamps[2] : 'deleted_at';
+		}
         }
         return TRUE;
     }
