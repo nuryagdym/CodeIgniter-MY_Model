@@ -643,7 +643,14 @@ class MY_Model extends CI_Model
         }
         elseif(isset($field_or_array) && isset($operator_or_value) && isset($value))
         {
-            if(strtolower($operator_or_value) == 'like') {
+            $operator_or_value = strtolower($operator_or_value);
+            $l = explode('_', $operator_or_value);
+            $side = 'both';
+            if(count($l) == 2 && $l[0] == 'like'){
+                $side = $l[1];
+                $operator_or_value = $l[0];
+            }
+            if($operator_or_value == 'like') {
                 if($with_not === TRUE)
                 {
                     $like = 'not_like';
@@ -657,7 +664,7 @@ class MY_Model extends CI_Model
                     $like = 'or_'.$like;
                 }
 
-                $this->_database->{$like}($field_or_array, $value);
+                $this->_database->{$like}($field_or_array, $value, $side);
             }
             else
             {
